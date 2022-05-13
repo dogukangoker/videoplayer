@@ -1,18 +1,5 @@
 .vjs-theme-fantasy {
-  width: 640px;
-}
-
-.vjs-theme-fantasy .vjs-big-play-button {
-  width: 65px;
-  height: 65px;
-  line-height: 65px;
-  font-size: 45px;
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  margin-top: -35px;
-  margin-left: -35px;
-  color: rgb(112, 112, 112);
+  border-radius: 4px;
 }
 
 .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
@@ -36,7 +23,6 @@
   line-height: 54px;
 }
 
-/* Play Button */
 .vjs-theme-fantasy .vjs-play-control {
   font-size: 1.5em;
   position: relative;
