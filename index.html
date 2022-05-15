@@ -11,15 +11,13 @@
     <link href="./style.css" rel="stylesheet" />
   </head>
   <body>
-    <h1>Video Player</h1>
-        <div class="video-container">
+        <div class="container">
+          <div class="video-container">
             <video
             id="video"
             class="video-js vjs-show-big-play-button-on-pause vjs-theme-fantasy"
             controls
             preload="auto"
-            width="540"
-            height="366"
             poster="https://media.istockphoto.com/photos/anitkabir-at-dusk-picture-id471509753?k=20&m=471509753&s=612x612&w=0&h=uBxisVW_yRp8q-SFzmtZdW_dep6vS3HMC36BTJ9Uv34="
             data-setup="{
                 responsive: true,
@@ -32,7 +30,40 @@
                 <!--Altyazı alanı-->
                 <track src="//vjs.zencdn.net/v/oceans.vtt" kind="subtitles" label="English" default="true"></track>
             </video>
+            <div id="wrapper-pulse" class="wrapper">              
+                <div class="blob orange"></div>
+                <div class="blob2 orange"></div>                           
+            </div>
+            <div class="wrapper-overlay">
+              <div class="overlay"></div>
+            </div>
       </div>
+        </div>
     <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
+    <script>
+      const pulse = document.getElementById("wrapper-pulse");
+      const overlay = document.getElementsByClassName("overlay")[0];
+      let player = videojs('video');
+      player.ready(function(){
+        const textTrackSettings = this.textTrackSettings;
+        textTrackSettings.setValues({
+          "backgroundColor": "#000",
+          "backgroundOpacity": "0",
+          "edgeStyle": "dropshadow",
+          "fontFamily": "Arial",
+          "fontOpacity": "1",
+          "fontColor": "#fff",
+          });
+        textTrackSettings.updateDisplay();
+      });
+      player.on('play', function(){
+        pulse.style.opacity = "0";
+        overlay.style.opacity = "0";
+      });
+      player.on('pause', function(){
+        pulse.style.opacity = "0.5";
+        overlay.style.opacity = "0.5";
+      });
+    </script>
   </body>
 </html>
