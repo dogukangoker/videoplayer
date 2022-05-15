@@ -20,8 +20,7 @@
             preload="auto"
             poster="https://media.istockphoto.com/photos/anitkabir-at-dusk-picture-id471509753?k=20&m=471509753&s=612x612&w=0&h=uBxisVW_yRp8q-SFzmtZdW_dep6vS3HMC36BTJ9Uv34="
             data-setup="{
-                responsive: true,
-                
+                responsive: true,                
             }"
             >
                 <!--Video alanı-->
@@ -37,12 +36,24 @@
             <div class="wrapper-overlay">
               <div class="overlay"></div>
             </div>
+            <div class="sound-icons">
+              <div class="mute-icon">
+                <i class="bi bi-volume-mute-fill"></i>
+              </div>
+              <div class="volume">
+                <div class="volume-icon">
+                  <i class="bi bi-volume-up-fill"></i>
+                </div>
+              </div>
+            </div>
       </div>
         </div>
     <script src="https://vjs.zencdn.net/7.18.1/video.min.js"></script>
     <script>
       const pulse = document.getElementById("wrapper-pulse");
       const overlay = document.getElementsByClassName("overlay")[0];
+      const muteBar = document.getElementsByClassName("mute-icon")[0];
+      const volumeBar = document.getElementsByClassName("volume-icon")[0];
       let player = videojs('video');
       player.ready(function(){
         const textTrackSettings = this.textTrackSettings;
@@ -56,14 +67,36 @@
           });
         textTrackSettings.updateDisplay();
       });
+      muteBar.addEventListener("click", function(){
+        player.muted(!player.muted());
+        
+        muteBar.style.display = "none";
+        volumeBar.style.display = "block";
+
+      });
+      volumeBar.addEventListener("click", function(e){
+        player.muted(!player.muted())
+        volumeBar.style.display = "none";
+        muteBar.style.display = "block";
+
+      });
+
+
+      player.on('fullscreenchange', function() {
+        overlay.style.opacity = "1";
+        pulse.style.opacity = "1";
+      });
       player.on('play', function(){
         pulse.style.opacity = "0";
         overlay.style.opacity = "0";
+        muteBar.style.display = "none";
+        volumeBar.style.display = "none";
       });
       player.on('pause', function(){
-        pulse.style.opacity = "0.5";
-        overlay.style.opacity = "0.5";
+        pulse.style.opacity = "0.8";
+        overlay.style.opacity = "0.8";
       });
+
     </script>
   </body>
 </html>

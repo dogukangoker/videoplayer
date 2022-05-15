@@ -11,6 +11,8 @@
   color: #fff;
 }
 .video-js {
+  width: 800px;
+  height: 456px;
   background: black;
 }
 .video-js .vjs-big-play-button .vjs-icon-placeholder:before {
@@ -135,19 +137,49 @@
   position: relative;
 }
 
+.sound-icons {
+  position: relative;
+}
+.mute-icon {
+  position: absolute;
+  display: block;
+  bottom: 120px;
+  left: 1.5em;
+}
+.mute-icon:hover {
+  cursor: pointer;
+}
+.mute-icon .bi {
+  font-size: 1.8em;
+  color: #fff;
+}
+.volume {
+  position: relative;
+  display: block;
+}
+
+.volume-icon {
+  position: absolute;
+  bottom: 120px;
+  left: 1.5em;
+  display: none;
+}
+
+.volume-icon:hover {
+  cursor: pointer;
+}
+
+.volume-icon .bi {
+  font-size: 1.8em;
+  color: #fff;
+}
+
 .wrapper {
   position: relative;
   width: 50px;
   height: 50px;
   bottom: 50%;
-  left: 44%;
-}
-.circle {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  z-index: 1;
+  left: 43%;
 }
 .blob {
   position: absolute;
@@ -257,6 +289,9 @@
 }
 
 @media only screen and (max-width: 640px) {
+  .vjs-theme-fantasy {
+    border-radius: 4px;
+  }
   .video-js {
     width: 360px;
     height: 246px;
