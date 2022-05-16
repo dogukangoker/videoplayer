@@ -139,6 +139,7 @@
 
 .sound-icons {
   position: relative;
+  z-index: 999;
 }
 .mute-icon {
   position: absolute;
@@ -218,8 +219,33 @@
     rgba(255, 207, 1, 0) 0%,
     rgba(255, 207, 1, 1) 100%
   );
-  opacity: 0.5;
+
   z-index: -99;
+}
+
+.overlay-title {
+  position: relative;
+  display: flex;
+  width: 328px;
+  height: 57px;
+  margin: 0 auto;
+  opacity: 1;
+}
+
+.overlay-title p {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  transform: translate(0%, -100%);
+  font-family: "Inter", sans-serif;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.44;
+  text-align: center;
+  margin: 20px;
 }
 
 .overlay {
@@ -289,9 +315,6 @@
 }
 
 @media only screen and (max-width: 640px) {
-  .vjs-theme-fantasy {
-    border-radius: 4px;
-  }
   .video-js {
     width: 360px;
     height: 246px;
@@ -310,20 +333,31 @@
     z-index: 0;
     width: 100%;
   }
+  .overlay-title {
+    position: relative;
+    display: flex;
+    width: 328px;
+    height: 57px;
+    margin: 0 auto;
+    opacity: 1;
+  }
+  .overlay-title p {
+    top: 100%;
+  }
 }
 
 @media only screen and (max-width: 360px) {
   .video-js {
     width: 300px;
     height: 206px;
-    margin: 40px 20px;
-    display: block;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
     border-radius: 4px;
   }
   .wrapper-overlay {
     height: 10px;
-    width: 300px;
-    margin-left: 20px;
+    width: 100%;
     z-index: 0;
   }
   .wrapper {
@@ -331,5 +365,44 @@
     left: 34%;
     z-index: 0;
     width: 100%;
+  }
+  .overlay-title p {
+    top: 120%;
+    font-size: 16px;
+  }
+  .sound-icons {
+    left: -10px;
+  }
+}
+@media only screen and (max-width: 300px) {
+  .video-js {
+    width: 260px;
+    height: 206px;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    border-radius: 4px;
+  }
+  .wrapper-overlay {
+    height: 10px;
+    width: 100%;
+    z-index: 0;
+  }
+  .wrapper {
+    bottom: 56%;
+    left: 28%;
+    z-index: 0;
+    width: 100%;
+  }
+  .overlay-title {
+    width: 240px;
+  }
+  .overlay-title p {
+    top: 110%;
+    left: 10%;
+    font-size: 12px;
+  }
+  .sound-icons {
+    left: -10px;
   }
 }

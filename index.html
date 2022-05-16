@@ -7,6 +7,9 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     <link href="./style.css" rel="stylesheet" />
   </head>
@@ -34,8 +37,13 @@
                 <div class="blob2 orange"></div>                           
             </div>
             <div class="wrapper-overlay">
-              <div class="overlay"></div>
+              <div class="overlay">
+                <div class="overlay-title">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                </div>
+              </div>
             </div>
+            
             <div class="sound-icons">
               <div class="mute-icon">
                 <i class="bi bi-volume-mute-fill"></i>
@@ -54,7 +62,11 @@
       const overlay = document.getElementsByClassName("overlay")[0];
       const muteBar = document.getElementsByClassName("mute-icon")[0];
       const volumeBar = document.getElementsByClassName("volume-icon")[0];
+      const title = document.getElementsByClassName("overlay-title")[0];
       let player = videojs('video');
+      let showTitleOnPause = false;
+
+
       player.ready(function(){
         const textTrackSettings = this.textTrackSettings;
         textTrackSettings.setValues({
@@ -68,8 +80,7 @@
         textTrackSettings.updateDisplay();
       });
       muteBar.addEventListener("click", function(){
-        player.muted(!player.muted());
-        
+        player.muted(!player.muted());        
         muteBar.style.display = "none";
         volumeBar.style.display = "block";
 
@@ -80,21 +91,19 @@
         muteBar.style.display = "block";
 
       });
-
-
-      player.on('fullscreenchange', function() {
-        overlay.style.opacity = "1";
-        pulse.style.opacity = "1";
-      });
       player.on('play', function(){
         pulse.style.opacity = "0";
         overlay.style.opacity = "0";
         muteBar.style.display = "none";
         volumeBar.style.display = "none";
+        title.style.opacity = "0";
       });
       player.on('pause', function(){
         pulse.style.opacity = "0.8";
         overlay.style.opacity = "0.8";
+        if(showTitleOnPause){
+          title.style.opacity = "1";
+        }
       });
 
     </script>
